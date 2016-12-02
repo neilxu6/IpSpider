@@ -16,6 +16,8 @@ def get_xici_ip_from_api(None):
         f.write(r.text)
         f.close()
 
+
+# 待调试
 def get_xici_ip_from_webpages(ip_type):
         countNum = 0
         proxyFile = open('proxy.txt', 'a')
