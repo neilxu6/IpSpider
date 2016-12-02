@@ -7,13 +7,13 @@ ip代理就会大显神威了。基于此，我写了个爬虫来动态获取几
 
 一、代理ip来源
 
-1、西刺免费代理IP，网址：http://www.xicidaili.com/（国内[🇨🇳]可以直接打开）
+1、西刺免费代理IP，网址：http://www.xicidaili.com/,（国内[🇨🇳]可以直接打开）
 
-2、最新中国ip地址代理服务器，网址：http://cn-proxy.com/（国内[🇨🇳]不能直接打开，需要海外代理，但是ip质量较高）
+2、最新中国ip地址代理服务器，网址：http://cn-proxy.com/,（国内[🇨🇳]不能直接打开，需要海外代理，但是ip质量较高）
 
-3、全球范围内代理服务器，网址：http://cn-proxy.com/archives/218（同上）
+3、全球范围内代理服务器，网址：http://cn-proxy.com/archives/218/,（同上）
 
-4、代理服务器网，网址：http://www.cnproxy.com/proxy5.html（同上）
+4、代理服务器网，网址：http://www.cnproxy.com/proxy5.html/,（同上）
 
 5、
 
