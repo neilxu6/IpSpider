@@ -13,7 +13,20 @@ ip代理就会大显神威了。基于此，我写了个爬虫来动态获取几
 
 3、全球范围内代理服务器（同上），网址：http://cn-proxy.com/archives/218
 
-4、代理服务器网，网址：http://www.cnproxy.com/proxy5.html
+4、代理服务器网（同上），网址：http://www.cnproxy.com/proxy5.html
+
+5、待续....
+
+二、文件设计
+
+【说明】本项目包括以下几类文件：爬取各个网站ip的爬虫文件（以各个网站名命名）、测试ip可用性文件、配置文件、结果输出文件（分为国内ip、国际ip）
+
+1、xici.py文件用来爬取西刺代理网站上的ip
+
+2、cn-proxy.py用来爬取中国ip地址网站上的ip
+
+3、gloabl-proxy.py用来爬取海外代理ip网站上的ip
+
+4、cnproxy.py用来爬取代理服务器上的ip
 
 5、
-
