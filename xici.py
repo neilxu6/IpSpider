@@ -22,7 +22,11 @@ def get_xici_ip_from_webpages(ip_type):
         }
         r=requests.get(start_url,headers=headers)
         bs=BeautifulSoup(r.text,'lxml')
-        
-        print bs
+        datas=bs.find_all('br')
+        # print datas
+        # data=bs.select('#ip_list > tbody > tr:nth-child(2) > td')
+        for data in datas:
+                print data
+
 
 get_xici_ip_from_webpages('nn')
