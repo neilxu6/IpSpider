@@ -34,10 +34,10 @@ def get_xici_ip_from_webpages(ip_type):
         start_url='http://www.xicidaili.com/'+str(ip_type)+'/'
         headers = {
                 'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"}
-        for page in range(1, 3):
+        for page in range(1, 20):
                 url = start_url + str(page)
                 # 这个网站对请求次数很敏感，可能网站规模不大大家手下留情
-                time.sleep(6)
+                time.sleep(10)
                 request = urllib2.Request(url, headers=headers)
                 html_doc = urllib2.urlopen(request).read()
                 soup = BeautifulSoup(html_doc, "html.parser")
