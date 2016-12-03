@@ -10,6 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+
 # 来源一：从api中获取ip
 # def get_xici_ip_from_api():
 #         start_url='http://api.xicidaili.com/free2016.txt'
@@ -20,21 +21,25 @@ sys.setdefaultencoding('utf-8')
 #         f5.write('http://'+str(r.text))
 #         print ('http://'+str(r.text))
 
+# proxy="http://112.25.41.136:80"
+# proxy_support=urllib.request.ProxyHandler({'http':proxy})
+# opener = urllib.request.build_opener(proxy_support)
+# urllib.request.install_opener(opener)
+# r = urllib.request.urlopen('http://icanhazip.com',timeout = 1000)
+
 
 # 来源二：从网页上爬取ip
 def get_xici_ip_from_webpages(ip_type):
         countNum = 0
         start_url='http://www.xicidaili.com/'+str(ip_type)+'/'
-
-        requestHeader = {
+        headers = {
                 'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"}
-
-        for page in range(1, 20):
+        for page in range(1, 3):
                 url = start_url + str(page)
-                time.sleep(2)
-                request = urllib2.Request(url, headers=requestHeader)
+                # 这个网站对请求次数很敏感，可能网站规模不大大家手下留情
+                time.sleep(6)
+                request = urllib2.Request(url, headers=headers)
                 html_doc = urllib2.urlopen(request).read()
-
                 soup = BeautifulSoup(html_doc, "html.parser")
                 trs = soup.find('table', id='ip_list').find_all('tr')
                 for tr in trs[1:]:
@@ -49,17 +54,21 @@ def get_xici_ip_from_webpages(ip_type):
                         print ('http://'+ip+':'+port)
                         if str(ip_type) in 'nn' or 'nt':
                                 if str(protocol)=='HTTP':
+                                        f0.write('http://' + ip + ':' + port + '\n')
                                         f1.write('http://'+ip+':'+port+'\n')
                                 else:
+                                        f0.write('http://' + ip + ':' + port + '\n')
                                         f2.write(protocol.lower()+'://'+ip+':'+port+'\n')
                         elif str(ip_type) in 'wn' or 'wt':
                                 if str(protocol) == 'HTTP':
+                                        f0.write('http://' + ip + ':' + port + '\n')
                                         f3.write('http://' + ip + ':' + port + '\n')
                                 else:
+                                        f0.write('http://' + ip + ':' + port + '\n')
                                         f4.write(protocol.lower() + '://' + ip + ':' + port + '\n')
                         else:
                                 pass
-        print '共'+countNum+'个ip'
+        print '共'+str(countNum)+'个ip'
         return countNum
 
 
