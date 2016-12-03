@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# 待调试
+
 
 import httplib
 import threading
@@ -15,7 +15,7 @@ def verifyProxyList():
         'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
     }
 
-    myurl = 'http://www.baidu.com/'
+    target_url = 'http://www.baidu.com/'
 
     while True:
         lock.acquire()
@@ -29,7 +29,7 @@ def verifyProxyList():
 
         try:
             conn = httplib.HTTPConnection(ip, port, timeout=5.0)
-            conn.request(method='GET', url=myurl, headers=requestHeader)
+            conn.request(method='GET', url=target_url, headers=requestHeader)
             res = conn.getresponse()
             lock.acquire()
             print "+++Success:" + ip + ":" + port
