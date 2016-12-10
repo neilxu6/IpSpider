@@ -18,7 +18,7 @@ def get_kuaidaili_ip_from_webpages(start_url,data=None):
     ips=soup.select('table > tbody > tr > td[data-title="IP"]')
     ports=soup.select('table > tbody > tr > td[data-title="PORT"]')
     for ip,port in zip(ips,ports):
-        data='http://'+ip.get_text()+':'+port.get_text()+'/'
+        data=ip.get_text()+':'+port.get_text()
         f0.write(data+'\n')
 
 

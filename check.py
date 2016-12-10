@@ -22,11 +22,9 @@ def verifyProxyList():
         ll = inFile.readline().strip()
         lock.release()
         if len(ll) == 0: break
-        line = ll.strip().split('|')
-        protocol = line[5]
-        ip = line[1]
-        port = line[2]
-
+        line = ll.strip().split(':')
+        ip=line[0]
+        port = line[1]
         try:
             conn = httplib.HTTPConnection(ip, port, timeout=5.0)
             conn.request(method='GET', url=target_url, headers=requestHeader)
@@ -43,16 +41,7 @@ if __name__ == '__main__':
     tmp = open('proxy.txt', 'w')
     tmp.write("")
     tmp.close()
-    proxynum = getProxyList("http://www.xicidaili.com/nn/")
-    print u"国内高匿：" + str(proxynum)
-    proxynum = getProxyList("http://www.xicidaili.com/nt/")
-    print u"国内透明：" + str(proxynum)
-    proxynum = getProxyList("http://www.xicidaili.com/wn/")
-    print u"国外高匿：" + str(proxynum)
-    proxynum = getProxyList("http://www.xicidaili.com/wt/")
-    print u"国外透明：" + str(proxynum)
 
-    print u"\n验证代理的有效性："
 
     all_thread = []
     for i in range(30):

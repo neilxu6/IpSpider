@@ -54,17 +54,17 @@ def get_xici_ip_from_webpages(ip_type):
                         print ('http://'+ip+':'+port)
                         if str(ip_type) in 'nn' or 'nt':
                                 if str(protocol)=='HTTP':
-                                        f0.write('http://' + ip + ':' + port + '\n')
-                                        f1.write('http://'+ip+':'+port+'\n')
+                                        f0.write(ip + ':' + port + '\n')
+                                        f1.write(ip+':'+port+'\n')
                                 else:
-                                        f0.write('http://' + ip + ':' + port + '\n')
+                                        f0.write(ip + ':' + port + '\n')
                                         f2.write(protocol.lower()+'://'+ip+':'+port+'\n')
                         elif str(ip_type) in 'wn' or 'wt':
                                 if str(protocol) == 'HTTP':
-                                        f0.write('http://' + ip + ':' + port + '\n')
-                                        f3.write('http://' + ip + ':' + port + '\n')
+                                        f0.write(ip + ':' + port + '\n')
+                                        f3.write(ip + ':' + port + '\n')
                                 else:
-                                        f0.write('http://' + ip + ':' + port + '\n')
+                                        f0.write(ip + ':' + port + '\n')
                                         f4.write(protocol.lower() + '://' + ip + ':' + port + '\n')
                         else:
                                 pass
