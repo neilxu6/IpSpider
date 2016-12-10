@@ -25,7 +25,7 @@ def verifyProxyList():
         port = line[1]
         try:
             conn = httplib.HTTPConnection(ip, port, timeout=5.0)
-            time.sleep(2)
+            time.sleep(1)
             conn.request(method='GET', url=target_url, headers=requestHeader)
             res = conn.getresponse()
             # lock.acquire()
