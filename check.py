@@ -2,13 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-
+import time
 import httplib
 import threading
 
-inFile = open('proxy.txt')
-outFile = open('verified.txt', 'w')
-lock = threading.Lock()
+
 
 def verifyProxyList():
     requestHeader ={
@@ -18,40 +16,41 @@ def verifyProxyList():
     target_url = 'http://www.baidu.com/'
 
     while True:
-        lock.acquire()
+        # lock.acquire()
         ll = inFile.readline().strip()
-        lock.release()
+        # lock.release()
         if len(ll) == 0: break
         line = ll.strip().split(':')
         ip=line[0]
         port = line[1]
         try:
             conn = httplib.HTTPConnection(ip, port, timeout=5.0)
+            time.sleep(2)
             conn.request(method='GET', url=target_url, headers=requestHeader)
             res = conn.getresponse()
-            lock.acquire()
+            # lock.acquire()
             print "+++Success:" + ip + ":" + port
             outFile.write(ll + "\n")
-            lock.release()
+            # lock.release()
         except:
             print "---Failure:" + ip + ":" + port
 
 
 if __name__ == '__main__':
-    tmp = open('proxy.txt', 'w')
-    tmp.write("")
-    tmp.close()
+    inFile = open('proxy.txt','r')
+    outFile = open('verified.txt', 'w')
+    # lock = threading.Lock()
+    verifyProxyList()
 
-
-    all_thread = []
-    for i in range(30):
-        t = threading.Thread(target=verifyProxyList)
-        all_thread.append(t)
-        t.start()
-
-    for t in all_thread:
-        t.join()
-
+    # all_thread = []
+    # for i in range(30):
+    #     t = threading.Thread(target=verifyProxyList)
+    #     all_thread.append(t)
+    #     t.start()
+    #
+    # for t in all_thread:
+    #     t.join()
+    #
     inFile.close()
     outFile.close()
     print "All Done."
