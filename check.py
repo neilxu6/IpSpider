@@ -4,52 +4,34 @@
 
 import time
 import httplib
-import threading
 
 
 
-def verifyProxyList():
-    requestHeader ={
-        'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
-    }
-
-    target_url = 'http://www.baidu.com/'
-
+def check_task():
+    inFile = open('CN-IP.txt', 'r+a')
+    outFile = open('verified.txt', 'r+a')
+    target_url='http://www.baidu.com'
+    headers ={
+            'User-Agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36"
+        }
     while True:
-        lock.acquire()
         ll = inFile.readline().strip()
-        lock.release()
         if len(ll) == 0: break
         line = ll.strip().split(':')
-        ip=line[0]
+        ip = line[0]
         port = line[1]
         try:
             conn = httplib.HTTPConnection(ip, port, timeout=5.0)
             time.sleep(1)
-            conn.request(method='GET', url=target_url, headers=requestHeader)
+            conn.request(method='GET', url=target_url, headers=headers)
             res = conn.getresponse()
-            lock.acquire()
             print "+++Success:" + ip + ":" + port
             outFile.write(ll + "\n")
-            lock.release()
+            outFile.close()
         except:
             print "---Failure:" + ip + ":" + port
-
-
-if __name__ == '__main__':
-    inFile = open('proxy.txt','r')
-    outFile = open('verified.txt', 'w')
-    lock = threading.Lock()
-
-    all_thread = []
-    for i in range(30):
-        t = threading.Thread(target=verifyProxyList)
-        all_thread.append(t)
-        t.start()
-
-    for t in all_thread:
-        t.join()
-
     inFile.close()
-    outFile.close()
-    print "All Done."
+
+def run_check_task():
+    check_task()
+

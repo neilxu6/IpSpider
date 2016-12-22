@@ -23,7 +23,7 @@ def kuaidaili_spider(start_url,data=None):
 
 def run_kuaidaili_spider():
 
-    for each_page_number in range(2, 4):
+    for each_page_number in range(1, 11):
         start_url = 'http://www.kuaidaili.com/proxylist/{}/'.format(str(each_page_number))
         kuaidaili_spider(start_url)
         print ('已完成快代理网站第' + '#' + str(each_page_number) + '#' + '页的ip和port抓取~')
