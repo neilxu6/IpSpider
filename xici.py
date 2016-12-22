@@ -3,7 +3,6 @@
 
 from bs4 import BeautifulSoup
 import urllib2
-import requests
 import time
 import sys
 reload(sys)
@@ -29,7 +28,7 @@ sys.setdefaultencoding('utf-8')
 
 
 # 来源二：从网页上爬取ip
-def get_xici_ip_from_webpages(ip_type):
+def xici_spider(ip_type):
         countNum = 0
         start_url='http://www.xicidaili.com/'+str(ip_type)+'/'
         headers = {
@@ -54,18 +53,9 @@ def get_xici_ip_from_webpages(ip_type):
                         print ('http://'+ip+':'+port)
                         if str(ip_type) in 'nn' or 'nt':
                                 if str(protocol)=='HTTP':
-                                        f0.write(ip + ':' + port + '\n')
                                         f1.write(ip+':'+port+'\n')
                                 else:
-                                        f0.write(ip + ':' + port + '\n')
                                         f2.write(protocol.lower()+'://'+ip+':'+port+'\n')
-                        elif str(ip_type) in 'wn' or 'wt':
-                                if str(protocol) == 'HTTP':
-                                        f0.write(ip + ':' + port + '\n')
-                                        f3.write(ip + ':' + port + '\n')
-                                else:
-                                        f0.write(ip + ':' + port + '\n')
-                                        f4.write(protocol.lower() + '://' + ip + ':' + port + '\n')
                         else:
                                 pass
         print '共'+str(countNum)+'个ip'
@@ -73,21 +63,10 @@ def get_xici_ip_from_webpages(ip_type):
 
 
 
-if __name__ == '__main__':
-        f0=open('results/xici_results/xici.txt','a')
-        f1=open('results/xici_results/xici_http_china.txt', 'a')
-        f2=open('results/xici_results/xici_other_protocols_china.txt','a')
-        f3=open('results/xici_results/xici_http_aborad.txt','a')
-        f4=open('results/xici_results/xici_other_protocols_aborad.txt','a')
-        f5=open('results/xici_results/xici_api.txt','a')
-
-        get_xici_ip_from_webpages('nn')
-
-        # get_xici_ip_from_api()
-
-        f0.close()
+def run_xici_spider():
+        f1 = open('CN-IP.txt', 'r+a')
+        f2 = open('FR-IP.txt', 'r+a')
+        xici_spider('nn')
         f1.close()
         f2.close()
-        f3.close()
-        f4.close()
-        f5.close()
+
