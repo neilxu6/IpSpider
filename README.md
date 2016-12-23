@@ -1,4 +1,4 @@
-# IpSpider（ip池）——ing中，敬请期待
+# IpSpider（ip池）
 简介：使用python创建一个ip池~
 
 动力来源：对于一位数据爱好者来说，没事儿就喜欢瞎爬一些数据，做个分析玩玩。但是没有节制的玩耍，迟早会酿成大祸，比如ip被网管封了。这个时候
@@ -8,11 +8,7 @@ ip代理就会大显神威了。基于此，我写了个爬虫来动态获取几
 
 1、西刺免费代理IP（国内[🇨🇳]可以直接打开），网址：http://www.xicidaili.com/
 
-2、最新中国ip地址代理服务器（国内[🇨🇳]不能直接打开，需要海外代理，但是ip质量较高），网址：http://cn-proxy.com/
-
-3、全球范围内代理服务器（同上），网址：http://cn-proxy.com/archives/218
-
-4、代理服务器网（同上），网址：http://www.cnproxy.com/proxy5.html
+2、快代理（国内[🇨🇳]可以直接打开），网址：http://www.kuaidaili.com/
 
 5、待续....
 
@@ -22,32 +18,25 @@ ip代理就会大显神威了。基于此，我写了个爬虫来动态获取几
 
 （一）爬取各个网站ip的爬虫文件
 
-1、xici.py文件用来爬取西刺代理网站上的ip（已完成）
+1、xici.py文件用来爬取西刺代理网站上的ip
 
-2、cn-proxy.py用来爬取中国ip地址网站上的ip（进行中...）
+2、kuaidaili.py用来爬取快代理网站上的ip
 
-3、gloabl-proxy.py用来爬取海外代理ip网站上的ip
-
-4、cnproxy.py用来爬取代理服务器上的ip
-
-5、待续...
+3、check.py文件用来测试爬到的ip是否可用
 
 （二）测试ip可用性文件
 
-check.py测试是否可以访问
-
-（三）配置文件
-
-configure.py文件中的配置内容包括：
-
-（1）待续...
+4、run.py启动整个项目，开始爬ip并测试ip是否可用
 
 （四）输出文件
 
-1、china_ip.py中国代理ip
+5、CN-IP.txt文件是爬到到全部国内代理ip（ip未测试）
 
-2、external_ip.py海外代理ip
+6、FR-IP.txt文件是爬到到全部国外代理ip（ip未测试）
+
+7、verified.txt文件使测试后的全部可用ip（ip已测试）
 
 三、使用方法
 
-执行配置文件configure.py即可，可用的结果输出在txt文档中。
+直接运行run.py文件即可
+
